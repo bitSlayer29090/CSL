@@ -11,7 +11,7 @@
 
 # shebang line to indicate the file is in python
 #!/usr/bin/env python3
-#:)
+##
 ### parameters
 pop_size = 50
 mySec = "2"
