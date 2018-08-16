@@ -1,0 +1,9 @@
+Name: break - interrupt the execution of a procedure for inspection
+
+SeeAlso:
+
+continue
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/lib/sli/debug.sli

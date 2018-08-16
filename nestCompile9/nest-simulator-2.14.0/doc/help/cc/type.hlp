@@ -1,0 +1,15 @@
+Name: type - Return the type of an object
+
+Synopsis:
+
+obj type -> /typename
+
+
+Examples:
+
+1 type -> /integertype
+
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/sli/slitypecheck.cc

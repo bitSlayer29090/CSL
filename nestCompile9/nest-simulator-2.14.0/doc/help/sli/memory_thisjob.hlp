@@ -1,0 +1,16 @@
+Name: memory_thisjob - report virtual memory size for current NEST process
+
+Synopsis:
+
+memory_thisjob -> vmsize
+
+
+Description:
+
+This function returns the virtual memory size (VmSize) for the current NEST 
+process by checking the /proc filesystem. VmSize is reported in kB.
+
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/lib/sli/processes.sli

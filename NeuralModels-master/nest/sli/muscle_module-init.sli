@@ -1,0 +1,6 @@
+/*
+ * Initialization file for muscle_module.
+ * Run automatically when muscle_module is loaded.
+ */
+
+M_DEBUG (muscle_module.sli) (Initializing SLI support for muscle_module.) message

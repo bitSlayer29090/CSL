@@ -1,0 +1,10 @@
+Name: trieinfo - print the function variants of a type-trie.
+
+Synopsis:
+
+ostream trieinfo ->	-
+
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/lib/sli/typeinit.sli

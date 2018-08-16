@@ -1,0 +1,16 @@
+Name: token_s - read a token from a string 
+ Synopsis:  string token_s -> post any true 
+ false
+
+References:
+
+The Red Book
+
+
+SeeAlso:
+
+token
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/sli/slicontrol.cc

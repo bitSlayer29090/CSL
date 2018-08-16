@@ -1,0 +1,25 @@
+Name: trunc - Truncate decimals of a double
+
+Synopsis:
+
+double trunc -> int
+
+
+Examples:
+
+3.123456 trunc -> 3
+
+
+Author:
+
+docu by Sirko Straube
+
+
+SeeAlso:
+
+floor
+ceil
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/lib/sli/ps-lib.sli

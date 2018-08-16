@@ -1,0 +1,10 @@
+Name: count - Count the number of objects on the stack.
+
+Synopsis:
+
+obj_n-1 ... obj0 count -> obj_n-1 ... obj0 n
+
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/sli/slistack.cc

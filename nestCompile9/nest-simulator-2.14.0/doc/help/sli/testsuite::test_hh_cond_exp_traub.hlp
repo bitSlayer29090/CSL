@@ -1,0 +1,23 @@
+Name: testsuite::test_hh_cond_exp_traub - sli script for overall test of hh_cond_exp_traub model
+
+Synopsis:
+
+(test_hh_cond_exp_traub) run ->
+
+
+Description:
+
+
+
+
+Author:
+
+
+
+
+SeeAlso:
+
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/testsuite/unittests/test_hh_cond_exp_traub.sli

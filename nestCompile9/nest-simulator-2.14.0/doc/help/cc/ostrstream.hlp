@@ -1,0 +1,21 @@
+Name: ostrstream - Create a string-stream object.
+
+Synopsis:
+
+ostrstream -> ostreamhandle true 
+-> false
+
+
+Description:
+
+Obsolete, use osstream instead.
+
+
+SeeAlso:
+
+str
+osstream
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/sli/sli_io.cc

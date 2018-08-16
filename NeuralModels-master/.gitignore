@@ -1,0 +1,5 @@
+nest/*.user
+nest/build
+spinnaker/c_models/src/neuron/builds/muscle_spindle/build
+spinnaker/python_models/model_binaries/muscle_spindle.aplx
+*.pyc

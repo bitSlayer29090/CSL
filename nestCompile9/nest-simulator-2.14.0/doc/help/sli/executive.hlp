@@ -1,0 +1,12 @@
+Name: executive - Start interactive interpreter session.
+
+SeeAlso:
+
+callback
+exithook
+quit
+exit
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/lib/sli/sli-init.sli

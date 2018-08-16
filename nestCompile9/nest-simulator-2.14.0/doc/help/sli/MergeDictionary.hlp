@@ -1,0 +1,15 @@
+Name: MergeDictionary - Merge all definitions of a dictionary with the current dicitonary.
+
+Synopsis:
+
+dict MergeDictionary ->	-
+
+
+SeeAlso:
+
+SaveDictionary
+RestoreDictionary
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/lib/sli/FormattedIO.sli

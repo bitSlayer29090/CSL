@@ -1,0 +1,15 @@
+Name: RestoreDictionary - Read a dictionary definition from a file.
+
+Synopsis:
+
+(fname) RestoreDictionary -> dict
+
+
+SeeAlso:
+
+SaveDictionary
+MergeDictionary
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/lib/sli/FormattedIO.sli

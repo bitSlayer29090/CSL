@@ -1,0 +1,10 @@
+Name: ArrayQ - returns true if top object is an array
+
+SeeAlso:
+
+NumberQ
+LiteralQ
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/lib/sli/mathematica.sli

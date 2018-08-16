@@ -1,0 +1,25 @@
+Name: exec - execute an object
+
+Synopsis:
+
+any exec ->	-
+
+
+Examples:
+
+{1 2 add} exec -> 3
+
+
+Description:
+
+exec tries to execute the object by moving it to 
+the execution stack.
+
+
+SeeAlso:
+
+cvx
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/sli/slicontrol.cc

@@ -1,0 +1,16 @@
+Name: rot - Rotate entire stack contents
+
+Synopsis:
+
+obj_n ... obj1 obj0 rot -> obj0 obj_n ... obj1
+
+
+SeeAlso:
+
+roll
+rollu
+rolld
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/sli/slistack.cc

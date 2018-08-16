@@ -1,0 +1,22 @@
+Name: cleardictstack - Pop all non standard dictionaries off the dictionary 
+ stack.
+
+Description:
+
+Removes all non standard dictionaries off the dictionary stack. 
+After this, only the systemdict and the userdict dictionaries remain on the 
+dictionary stack.
+
+
+SeeAlso:
+
+dictstack
+begin
+end
+currentdict
+who
+whos
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/sli/slidict.cc

@@ -1,0 +1,20 @@
+Name: testsuite::test_spike_detector - sli script to test spike_detector device
+
+Synopsis:
+
+(test_spike_detector) run
+
+
+Description:
+
+added more tests
+
+
+Author:
+
+Sepehr Mahmoudian
+
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/testsuite/unittests/test_spike_detector.sli

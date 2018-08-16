@@ -1,0 +1,21 @@
+Name: ExecMath - execute a math expression.
+
+Synopsis:
+
+(expr) ExecMath -> val
+
+
+Description:
+
+ExecMath is equivalent to the sequence 
+CompileMath exec
+
+
+SeeAlso:
+
+CompileMath
+Inline
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/lib/sli/mathematica.sli

@@ -1,0 +1,19 @@
+Name: IntegerQ - returns true if top object is an integer (int)
+
+Synopsis:
+
+int   IntegerQ -> true 
+any   IntegerQ -> false
+
+
+SeeAlso:
+
+NumberQ
+DoubleQ
+LiteralQ
+ArrayQ
+StringQ
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/lib/sli/mathematica.sli

@@ -1,0 +1,24 @@
+Name: GetMax - get maximal element
+
+Synopsis:
+
+array GetMax -> int
+
+
+Description:
+
+returns the maximum value in an array of ints.
+
+
+Remarks:
+
+works only for integer arrays.
+
+
+SeeAlso:
+
+GetMin
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/sli/sliarray.cc
