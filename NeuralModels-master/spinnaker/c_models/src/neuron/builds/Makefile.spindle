@@ -1,0 +1,152 @@
+ifndef NEURAL_MODELLING_DIRS
+    $(error NEURAL_MODELLING_DIRS is not set.  Please define NEURAL_MODELLING_DIRS (possibly by running "source setup" in the neural_modelling folder within the sPyNNaker source folder))
+endif
+
+MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
+CURRENT_DIR := $(dir $(MAKEFILE_PATH))
+EXTRA_SRC_DIR := $(abspath $(CURRENT_DIR))
+SOURCE_DIRS += $(EXTRA_SRC_DIR)
+APP_OUTPUT_DIR := $(abspath $(CURRENT_DIR)../../python_models/model_binaries/)/
+CFLAGS += -I$(NEURAL_MODELLING_DIRS)/src
+
+EXTRA_SYNAPSE_TYPE_OBJECTS += 
+                       
+EXTRA_STDP += 
+
+
+SYNAPSE_BENCHMARK = NO_SYNAPSE_BENCHMARKS
+
+ifeq ($(DEBUG), DEBUG)
+    NEURON_DEBUG = LOG_DEBUG
+    SYNAPSE_DEBUG = LOG_DEBUG
+    PLASTIC_DEBUG = LOG_DEBUG
+endif
+
+ifndef NEURON_DEBUG
+    NEURON_DEBUG = LOG_INFO
+endif
+
+ifndef SYNAPSE_DEBUG
+    SYNAPSE_DEBUG = LOG_INFO
+endif
+
+ifndef PLASTIC_DEBUG
+    PLASTIC_DEBUG = LOG_INFO
+endif
+
+#POPULATION_TABLE_IMPL ?= fixed
+POPULATION_TABLE_IMPL ?= binary_search
+
+ifndef ADDITIONAL_INPUT_H
+    ADDITIONAL_INPUT_H = $(SOURCE_DIR)/neuron/additional_inputs/additional_input_none_impl.h
+endif
+
+ifndef NEURON_MODEL
+    $(error NEURON_MODEL is not set.  Please choose a neuron model to compile)
+else
+    NEURON_MODEL_O = $(BUILD_DIR)neuron/models/$(notdir $(basename $(NEURON_MODEL))).o
+endif
+
+ifndef NEURON_MODEL_H
+    $(error NEURON_MODEL_H is not set.  Please select a neuron model header file)
+endif
+
+ifndef INPUT_TYPE_H
+    $(error INPUT_TYPE_H is not set.  Please select an input type header file)
+endif
+
+ifndef THRESHOLD_TYPE_H
+    $(error THRESHOLD_TYPE_H is not set.  Please select a threshold type header file)
+endif
+
+ifndef SYNAPSE_TYPE_H
+    $(error SYNAPSE_TYPE_H is not set.  Please select a synapse type header file)
+endif
+
+ifndef SYNAPSE_DYNAMICS
+    $(error SYNAPSE_DYNAMICS is not set.  Please select a synapse dynamics implementation)
+endif
+
+ifdef WEIGHT_DEPENDENCE
+    WEIGHT_DEPENDENCE_O = $(BUILD_DIR)neuron/plasticity/stdp/weight_dependence/$(notdir $(basename $(WEIGHT_DEPENDENCE))).o
+endif
+
+ifdef TIMING_DEPENDENCE
+    TIMING_DEPENDENCE_O = $(BUILD_DIR)neuron/plasticity/stdp/timing_dependence/$(notdir $(basename $(TIMING_DEPENDENCE))).o
+endif
+
+SOURCES = $(EXTRA_SRC_DIR)/neuron/c_main.c \
+		  $(EXTRA_SRC_DIR)/neuron/neuron.c \
+		  $(EXTRA_SRC_DIR)/neuron/synapses.c \
+		  $(SOURCE_DIR)/common/out_spikes.c \
+	      $(SOURCE_DIR)/neuron/spike_processing.c \
+	      $(SOURCE_DIR)/neuron/population_table/population_table_$(POPULATION_TABLE_IMPL)_impl.c \
+	      $(NEURON_MODEL) $(SYNAPSE_DYNAMICS) $(WEIGHT_DEPENDENCE) \
+	      $(TIMING_DEPENDENCE) $(OTHER_SOURCES)
+
+SYNAPSE_TYPE_SOURCES += $(EXTRA_SRC_DIR)/neuron/c_main.c \
+						$(EXTRA_SRC_DIR)/neuron/synapses.c \
+                        $(SOURCE_DIR)/neuron/spike_processing.c \
+                        $(SOURCE_DIR)/neuron/population_table/population_table_fixed_impl.c \
+                        $(SOURCE_DIR)/neuron/population_table/population_table_binary_search_impl.c \
+                        $(SOURCE_DIR)/neuron/plasticity/synapse_dynamics_static_impl.c
+                       
+STDP += $(SOURCE_DIR)/neuron/plasticity/stdp/synapse_dynamics_stdp_mad_impl.c \
+        $(SOURCE_DIR)/neuron/plasticity/stdp/synapse_dynamics_stdp_impl.c \
+        $(SOURCE_DIR)/neuron/plasticity/common/post_events.c
+
+CFLAGS += -D$(SYNAPSE_BENCHMARK)
+
+include ../../../Makefile.spindle
+
+define stdp-build-rules
+$$(patsubst $1/%.c,$$(BUILD_DIR)%.o,$$(filter $1/%.c,$$(SYNAPSE_TYPE_SOURCES))):$$(BUILD_DIR)%.o: $1/%.c $$(SYNAPSE_TYPE_H)
+	-mkdir -p $$(dir $$@)
+	$$(CC) -D__FILE__=\"$$(notdir $$*.c)\" -DLOG_LEVEL=$(SYNAPSE_DEBUG) \
+	        $$(CFLAGS) \
+	        -include $(SYNAPSE_TYPE_H) -o $$@ $$<
+
+$$(patsubst $1/%.c,$$(BUILD_DIR)%.o,$$(filter $1/%.c,$$(STDP))):$$(BUILD_DIR)%.o: $1/%.c $$(SYNAPSE_TYPE_H) \
+                           $$(WEIGHT_DEPENDENCE_H) $$(TIMING_DEPENDENCE_H)
+	-mkdir -p $$(dir $$@)
+	$$(CC) -D__FILE__=\"$$(notdir $$*.c)\" -DLOG_LEVEL=$$(PLASTIC_DEBUG) \
+	      $$(CFLAGS) \
+	      -include $$(SYNAPSE_TYPE_H) \
+	      -include $$(WEIGHT_DEPENDENCE_H) \
+	      -include $$(TIMING_DEPENDENCE_H) -o $$@ $$<
+endef
+
+$(foreach dir, $(SOURCE_DIRS), $(eval $(call stdp-build-rules,$(dir))))
+
+$(WEIGHT_DEPENDENCE_O): $(WEIGHT_DEPENDENCE) $(SYNAPSE_TYPE_H)
+	-mkdir -p $(dir $@)
+	$(CC) -D__FILE__=\"$(notdir $*.c)\" -DLOG_LEVEL=$(PLASTIC_DEBUG) $(CFLAGS) \
+	        -include $(SYNAPSE_TYPE_H) -o $@ $<
+
+$(TIMING_DEPENDENCE_O): $(TIMING_DEPENDENCE) $(SYNAPSE_TYPE_H) \
+                        $(WEIGHT_DEPENDENCE_H)
+	-mkdir -p $(dir $@)
+	$(CC) -D__FILE__=\"$(notdir $*.c)\" -DLOG_LEVEL=$(PLASTIC_DEBUG) $(CFLAGS) \
+	        -include $(SYNAPSE_TYPE_H)\
+	        -include $(WEIGHT_DEPENDENCE_H) -o $@ $<
+
+$(NEURON_MODEL_O): $(NEURON_MODEL)
+	-mkdir -p $(dir $@)
+	$(CC) -D__FILE__=\"$(notdir $*.c)\" -DLOG_LEVEL=$(NEURON_DEBUG) \
+	        $(CFLAGS) -o $@ $<
+
+$(BUILD_DIR)neuron/neuron.o: $(EXTRA_SRC_DIR)/neuron/neuron.c\
+							 $(NEURON_MODEL_H) \
+                             $(SYNAPSE_TYPE_H)
+	-mkdir -p $(dir $@)
+	$(CC) -D__FILE__=\"neuron.c\" -DLOG_LEVEL=$(NEURON_DEBUG) $(CFLAGS) \
+	      -include $(NEURON_MODEL_H) \
+	      -include $(SYNAPSE_TYPE_H) \
+	      -include $(INPUT_TYPE_H) \
+	      -include $(THRESHOLD_TYPE_H) \
+	      -include $(ADDITIONAL_INPUT_H) -o $@ $<
+
+$(BUILD_DIR)neuron/fp_math.o: $(EXTRA_SRC_DIR)/neuron/fp_math.c\
+$(EXTRA_SRC_DIR)/neuron/fp_math.h
+	$(CC) -D__FILE__=\"fp_math.c\" -DLOG_LEVEL=$(NEURON_DEBUG) $(CFLAGS) \
+	      -o $@ $<

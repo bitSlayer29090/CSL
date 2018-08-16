@@ -1,0 +1,10 @@
+Name: cycles - return the number of elapsed interpreter cycles
+
+Synopsis:
+
+cycles -> n
+
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/sli/slicontrol.cc

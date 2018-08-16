@@ -1,0 +1,21 @@
+Name: ones - Return a DoubleVector filled with ones. 
+ Synapsis: n ones -> [. 1. 1. ... .]
+
+Author:
+
+Marc-Oliver Gewaltig
+
+
+FirstVersion:
+
+Dec. 4 2012
+
+
+SeeAlso:
+
+zeros
+arange
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/lib/sli/mathematica.sli

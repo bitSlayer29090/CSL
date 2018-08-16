@@ -1,0 +1,10 @@
+Name: noop - no operation function
+
+Description:
+
+This function does nothing. It is used for benchmark purposes.
+
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/sli/slicontrol.cc

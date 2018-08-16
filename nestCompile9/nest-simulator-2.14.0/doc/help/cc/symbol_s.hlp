@@ -1,0 +1,11 @@
+Name: symbol_s - read a symbol from a string 
+ Synopsis:  string symbol_s -> post any true 
+ false
+
+SeeAlso:
+
+token
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/sli/slicontrol.cc

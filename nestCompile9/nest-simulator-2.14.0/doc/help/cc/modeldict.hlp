@@ -1,0 +1,17 @@
+Name: modeldict - dictionary containing all devices and models of NEST
+
+Description:
+
+'modeldict info' shows the contents of the dictionary
+
+
+SeeAlso:
+
+info
+Device
+RecordingDevice
+subnet
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/nestkernel/model_manager.h

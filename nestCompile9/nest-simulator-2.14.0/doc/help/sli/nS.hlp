@@ -1,0 +1,9 @@
+Name: nS - Specification in nS (for readability)
+
+SeeAlso:
+
+unit_conversion
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/lib/sli/nest-init.sli

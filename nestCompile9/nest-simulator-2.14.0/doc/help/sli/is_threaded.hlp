@@ -1,0 +1,20 @@
+Name: is_threaded - returns true if NEST/SLI was compiled with thread support
+
+Synopsis:
+
+is_threaded -> bool
+
+
+Description:
+
+Returns true if NEST/SLI was compiled with support for threads, and returns 
+false otherwise.
+
+
+SeeAlso:
+
+statusdict
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/lib/sli/sli-init.sli

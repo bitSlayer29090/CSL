@@ -1,0 +1,10 @@
+Name: clear - Clear the entire stack.
+
+SeeAlso:
+
+pop
+npop
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/sli/slistack.cc

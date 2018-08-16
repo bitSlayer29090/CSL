@@ -1,0 +1,25 @@
+Name: neg_i - reverse sign of integer value 
+ Synopsis:  integer neg -> integer
+
+Remarks:
+
+implemented by C/C++ 
+	- operator 
+This function is called CHS in HP48S and 
+related dialects. 
+SeeAlso:neg
+
+
+Author:
+
+Diesmann
+
+
+FirstVersion:
+
+29.7.1999
+
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/sli/slimath.cc

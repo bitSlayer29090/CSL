@@ -1,0 +1,20 @@
+Name: backtrace_off - Disable the stack backtrace on error.
+
+Synopsis:
+
+backtrace_off ->	-
+
+
+Description:
+
+This functions disables the backtrace of the execution 
+stack and re-enables tail recursion optimization.
+
+
+SeeAlso:
+
+backtrace_on
+
+Source:
+
+/cluster/2020shachem/CSL/nestCompile9/nest-simulator-2.14.0/sli/slicontrol.cc
