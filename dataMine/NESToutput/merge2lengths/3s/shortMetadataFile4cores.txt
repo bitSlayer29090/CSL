@@ -1,0 +1,4 @@
+optLengths start 1.2175401929260452
+optLengths end 1.0953858520900321
+myLenS 3 myR 1 myV 0 myC 1
+avg seconds spent per nest.Simulate() simulation 16.347683443687856

@@ -1,0 +1,140 @@
+optLengths start 1.2175401929260452
+optLengths end 1.0918971061093248
+myLenS 1 myR 1 myV 0 myC 1
+avg seconds spent per nest.Simulate() simulation 5.476773638278246
+optLengths start 1.2183839779005523
+optLengths end 0.8147513812154695
+myLenS 1 myR 1 myV 0 myC 2
+avg seconds spent per nest.Simulate() simulation 4.804370968602598
+optLengths start 1.2113504823151124
+optLengths end 1.0784405144694533
+myLenS 1 myR 1 myV 1 myC 1
+avg seconds spent per nest.Simulate() simulation 5.308055881410837
+optLengths start 1.1888121546961323
+optLengths end 0.8071270718232044
+myLenS 1 myR 1 myV 1 myC 2
+avg seconds spent per nest.Simulate() simulation 4.688201525248587
+optLengths start 0.7341242038216561
+optLengths end 1.0352707006369428
+myLenS 1 myR 1 myV 1 myC 3
+avg seconds spent per nest.Simulate() simulation 4.885061541572213
+optLengths start 1.2115273311897106
+optLengths end 1.084774919614148
+myLenS 1 myR 1 myV 2 myC 1
+avg seconds spent per nest.Simulate() simulation 5.261574841104448
+optLengths start 1.1838950276243092
+optLengths end 0.8177762430939226
+myLenS 1 myR 1 myV 2 myC 2
+avg seconds spent per nest.Simulate() simulation 4.77444455306977
+optLengths start 0.7427707006369427
+optLengths end 1.0330573248407644
+myLenS 1 myR 1 myV 2 myC 3
+avg seconds spent per nest.Simulate() simulation 4.960013837553561
+optLengths start 0.9195061728395062
+optLengths end 0.753432098765432
+myLenS 1 myR 1 myV 3 myC 0
+avg seconds spent per nest.Simulate() simulation 4.643420819193125
+optLengths start 1.18959807073955
+optLengths end 1.1535048231511256
+myLenS 1 myR 1 myV 3 myC 1
+avg seconds spent per nest.Simulate() simulation 5.321531621739268
+optLengths start 1.224060773480663
+optLengths end 1.0284944751381215
+myLenS 1 myR 1 myV 3 myC 2
+avg seconds spent per nest.Simulate() simulation 5.285345770418644
+optLengths start 0.6988535031847135
+optLengths end 0.8648726114649683
+myLenS 1 myR 1 myV 3 myC 3
+avg seconds spent per nest.Simulate() simulation 4.1721229972317815
+optLengths start 1.1932797427652733
+optLengths end 1.1107234726688102
+myLenS 1 myR 1 myV 4 myC 1
+avg seconds spent per nest.Simulate() simulation 5.337400819174945
+optLengths start 1.2297375690607735
+optLengths end 0.8454558011049723
+myLenS 1 myR 1 myV 4 myC 2
+avg seconds spent per nest.Simulate() simulation 5.1234115129336715
+optLengths start 1.1939228295819935
+optLengths end 1.1120418006430868
+myLenS 1 myR 1 myV 5 myC 1
+avg seconds spent per nest.Simulate() simulation 5.327217982150614
+optLengths start 1.2303038674033149
+optLengths end 0.8489502762430938
+myLenS 1 myR 1 myV 5 myC 2
+avg seconds spent per nest.Simulate() simulation 5.111881907097995
+optLengths start 1.1991318327974276
+optLengths end 1.0834565916398715
+myLenS 1 myR 1 myV 6 myC 1
+avg seconds spent per nest.Simulate() simulation 5.39021450933069
+optLengths start 1.152914364640884
+optLengths end 0.8059116022099446
+myLenS 1 myR 1 myV 6 myC 2
+avg seconds spent per nest.Simulate() simulation 4.8455056212842464
+optLengths start 0.7807165605095543
+optLengths end 1.0325796178343951
+myLenS 1 myR 1 myV 6 myC 3
+avg seconds spent per nest.Simulate() simulation 4.927493883296847
+optLengths start 0.9160246913580247
+optLengths end 0.8186296296296297
+myLenS 1 myR 1 myV 7 myC 0
+avg seconds spent per nest.Simulate() simulation 4.336445898748934
+optLengths start 1.2015755627009646
+optLengths end 1.1889549839228297
+myLenS 1 myR 1 myV 7 myC 1
+avg seconds spent per nest.Simulate() simulation 5.309267858974636
+optLengths start 1.2295441988950275
+optLengths end 1.1181491712707181
+myLenS 1 myR 1 myV 7 myC 2
+avg seconds spent per nest.Simulate() simulation 5.283121212385595
+optLengths start 0.6732643312101911
+optLengths end 0.800907643312102
+myLenS 1 myR 1 myV 7 myC 3
+avg seconds spent per nest.Simulate() simulation 4.305595139972866
+optLengths start 0.8316543209876542
+optLengths end 0.6319259259259259
+myLenS 1 myR 1 myV 8 myC 0
+avg seconds spent per nest.Simulate() simulation 4.347810693085194
+optLengths start 1.1878456591639872
+optLengths end 1.1068810289389068
+myLenS 1 myR 1 myV 8 myC 1
+avg seconds spent per nest.Simulate() simulation 5.330804440192878
+optLengths start 1.1241988950276243
+optLengths end 0.8588674033149171
+myLenS 1 myR 1 myV 8 myC 2
+avg seconds spent per nest.Simulate() simulation 5.219821344129741
+optLengths start 0.8098885350318472
+optLengths end 1.0265605095541401
+myLenS 1 myR 1 myV 8 myC 3
+avg seconds spent per nest.Simulate() simulation 4.618113450706005
+optLengths start 0.9099012345679013
+optLengths end 0.788358024691358
+myLenS 1 myR 1 myV 9 myC 0
+avg seconds spent per nest.Simulate() simulation 3.1884699519723654
+optLengths start 1.2009003215434084
+optLengths end 0.8496463022508038
+myLenS 1 myR 1 myV 9 myC 1
+avg seconds spent per nest.Simulate() simulation 3.5758854560554028
+optLengths start 1.2218093922651931
+optLengths end 0.7768508287292817
+myLenS 1 myR 1 myV 9 myC 2
+avg seconds spent per nest.Simulate() simulation 3.5958626000210643
+optLengths start 0.6993152866242038
+optLengths end 1.10843949044586
+myLenS 1 myR 1 myV 9 myC 3
+avg seconds spent per nest.Simulate() simulation 3.141275577247143
+optLengths start 0.9099506172839505
+optLengths end 0.788358024691358
+myLenS 1 myR 1 myV 10 myC 0
+avg seconds spent per nest.Simulate() simulation 1.9979306450113654
+optLengths start 1.1989710610932476
+optLengths end 0.8496463022508038
+myLenS 1 myR 1 myV 10 myC 1
+avg seconds spent per nest.Simulate() simulation 2.2885476741939783
+optLengths start 1.2202348066298343
+optLengths end 0.7768508287292817
+myLenS 1 myR 1 myV 10 myC 2
+avg seconds spent per nest.Simulate() simulation 2.2889487966895103
+optLengths start 0.7004299363057325
+optLengths end 1.10843949044586
+myLenS 1 myR 1 myV 10 myC 3
+avg seconds spent per nest.Simulate() simulation 2.13812050037086
