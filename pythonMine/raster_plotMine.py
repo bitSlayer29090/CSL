@@ -30,6 +30,8 @@ from pylab import show, savefig
 global myCount
 myCount = 0
 #myNames = []
+myOutputDir = "/cluster/2020shachem/CSL/dataMine/NESToutput/merge2lengths/"\
+	"1s/plots/rasterPlots/"
 # end mine
 
 def extract_events(data, time=None, sel=None):
@@ -303,8 +305,7 @@ def _make_plot(ts, ts1, gids, neurons, hist=True, hist_binwidth=5.0,
 
     # mine
     global myCount
-    myFig.savefig("/cluster/2020shachem/CSL/dataMine/NESToutput/merge2lengths/"\
-         "1s/plots/" + str(myCount) + ".png")
+    myFig.savefig(myOutputDir + str(myCount) + ".png")
     myCount = myCount + 1
     # end mine
 

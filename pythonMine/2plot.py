@@ -1,8 +1,9 @@
 # edited version of nest_example.py, which has copyright (C) 2017 Lorenzo Vannucci
-# reads lengths data, samples length at every 10 ms, converts sampled lengths to decimals of the muscle's
-# optimal fiber length, makes population of primary and secondary muscle spindle afferents, simulates, times
-# simulation, and plots afferent action potentials in a raster plot
-# afferent action potentials in raster plot
+# reads lengths data, samples length at every 10 ms, converts sampled lengths to
+# decimals of the muscle's optimal fiber length, makes population of primary and
+# secondary muscle spindle afferents, simulates, times simulation, and plots 
+# afferent action potentials in a raster plot afferent action potentials in 
+# raster plot
 # see documentation.txt for explanation of program
 
 # edited version made by Stephanie Hachem
@@ -12,8 +13,9 @@
 
 ### parameters
 myP = 0 # if printing
-myW = 0 # if writing
-myPl = 1 # if plotting
+myW = False # if writing
+myPl = 0 # if plotting
+#myMD = 0 # if writing metadata, should always be true on cluster
 pop_size = 50
 #mySec = "2"
 myR = 1
@@ -21,7 +23,7 @@ myLenS = 1
 inputDir = "/cluster/2020shachem/CSL/dataMine/lengths/merge2lengths/"\
 + str(myLenS) + "s/"
 outputDir = "/cluster/2020shachem/CSL/dataMine/NESToutput/merge2lengths/"\
-+ str(myLenS) + "s/"
+ + str(myLenS) + "s/"
 if(myLenS==1):
 	names = ["1with2MTstart6.63", "5with-1MTstart32.26", \
 	"8with-1MTstart52.24","10with-1MTstart63.26", "10with-1MTstart63.55", \
@@ -52,8 +54,8 @@ optFiberLengths = { \
 	"FCR" : 0.0628}
 currentMuscles=["ECRL","ECU","EDCM","FCR"]
 
-metadataFile = open(outputDir + "metadataFile4cores.txt", "w")
-smf = open(outputDir + "shortMetadataFile4cores.txt", "w")
+metadataFile = open(outputDir + "datsAndMetadata/metadataFile4cores.txt", "w")
+smf = open(outputDir + "datsAndMetadata/shortMetadataFile4cores.txt", "w")
 
 ### basically mine, prepare nest
 # import modules
@@ -72,7 +74,7 @@ nest.Install("muscle_module")
 
 for myV in range(1):#len(names)):
 	myV = 0
-	for myDC in range(2):#len(didntCrash)):#len(currentMuscles)):
+	for myDC in range(len(didntCrash)):#len(currentMuscles)):
 		#myC = 1
 		
 		underscoreIndex = didntCrash[myDC].find("_")
@@ -97,9 +99,9 @@ for myV in range(1):#len(names)):
 		
 		if(myP):
 			print("times array ; should be reasonable times"\
-			" given MTstart\n")
+			" given MTstart")
 			for i in range(10):
-				print(ta[i] + "\n")
+				print(ta[i])
 
 		before = float(ta[0]) 
 		after = float(ta[0])
@@ -129,36 +131,34 @@ for myV in range(1):#len(names)):
 
 		if(myP):
 			print("checkA ; should typically have 0.01 s"\
-			" diffs\n")
+			" diffs")
 			for i in range(10):
-				print(str(checkA[i])+"\n")
+				print(str(checkA[i]))
 
-			print("indiciesA \n")
+			print("indiciesA")
 			for i in range(10):
-				print(str(indiciesA[i]) + "\n")
+				print(str(indiciesA[i]))
 
-		"""
-		# replaced by 'account for irregular timestep section above
-		### sample muscle length alternating at every 2nd or 3rd index 
-		#(around every (4*2 =) 8 + (4*3=) 12 = 20/2 = 10 ms (averages 
-		#out to every 10 ms per sample) if the average timestep is 
-		#around 4 ms)
-
-		leftover = len(lengths)%10
-		lengths = lengths[:len(lengths)-leftover]
-
-		every10lengths = []
-		c = 0
-		while(c<len(lengths)):
-			if(c%2==0):
-				every10lengths = every10lengths + [lengths[c]]
-				c=c+3
-			else:
-				every10lengths = every10lengths + [lengths[c]]
-				c=c+2
-
-		# print(len(every10lengths))
-		"""
+		## replaced by 'account for irregular timestep section above
+		#### sample muscle length alternating at every 2nd or 3rd index 
+		##(around every (4*2 =) 8 + (4*3=) 12 = 20/2 = 10 ms (averages 
+		##out to every 10 ms per sample) if the average timestep is 
+		##around 4 ms)
+		#
+		#leftover = len(lengths)%10
+		#lengths = lengths[:len(lengths)-leftover]
+		#
+		#every10lengths = []
+		#c = 0
+		#while(c<len(lengths)):
+		#	if(c%2==0):
+		#		every10lengths = every10lengths + [lengths[c]]
+		#		c=c+3
+		#	else:
+		#		every10lengths = every10lengths + [lengths[c]]
+		#		c=c+2
+		#
+		## print(len(every10lengths))
 		
 		### read lengths.mot
 		#read file
@@ -177,9 +177,9 @@ for myV in range(1):#len(names)):
 			metadataFile.write(str(lengths[i])+"\n")
 
 		if(myP):
-			print("lengths ; should be reasonable lengths\n")
+			print("lengths ; should be reasonable lengths")
 			for i in range(10):
-				print(str(lengths[i])+"\n")
+				print(str(lengths[i]))
 		
 		# take lengths at 10 ms intervals
 		every10msLengths = []
@@ -194,9 +194,9 @@ for myV in range(1):#len(names)):
 
 		if(myP):
 			print("every 10 ms lengths ; should be reasonable"\
-			" lengths\n")
+			" lengths")
 			for i in range(10):
-				print(str(every10msLengths[i])+"\n")
+				print(str(every10msLengths[i]))
 
 		### calculate what decimal each sampled length is of the 
 		#muscle's optimal fiber length
@@ -233,20 +233,21 @@ for myV in range(1):#len(names)):
 		+ " myV " + str(myV) + " myC " + str(myC)+"\n")
 
 		if(myP):
-			print("optLengths start "+str(optLengths[0])+"\n")
+			print("optLengths start "+str(optLengths[0]))
 			print("optLengths end " \
-			+ str(optLengths[len(optLengths)-1]) +"\n")
+			+ str(optLengths[len(optLengths)-1]))
 			print("myLenS " + str(myLenS) + " myR " + str(myR)\
-			+ " myV " + str(myV) + " myC " + str(myC)+"\n")
+			+ " myV " + str(myV) + " myC " + str(myC))
 
 		### NEST
 		# including reset since it seems to speed up
 		# reset simulation kernel
 		nest.ResetKernel()
 
-		# set simulation kernel status for writing to file
-		nest.SetKernelStatus({"overwrite_files": True, "data_path": "", \
-		"data_prefix": ""})
+		if(myW):
+			# set simulation kernel status for writing to file
+			nest.SetKernelStatus({"overwrite_files": True, \
+			"data_path": "", "data_prefix": ""})
 
 		# create spindle population, all primary afferents by default
 		ms = nest.Create("muscle_spindle", 2*pop_size)
@@ -266,13 +267,14 @@ for myV in range(1):#len(names)):
 		sd = nest.Create("spike_detector")
 		nest.Connect(ms, sd)
 
-		# with 'Multimeter to file example' NEST tutorial params, edited\
-		# for muscle_spindle
-		myLabel = outputDir + names[myV] + currentMuscles[myC] \
-			+ "afferents"
+		#if(myW or myPl): # dont use that
+		# with 'Multimeter to file example' NEST tutorial \
+		# params, edited for muscle_spindle
+		myLabel = outputDir + "datsAndMetadata/"\
+			+ names[myV] + currentMuscles[myC] + "afferents"
 		mm = nest.Create("multimeter", params={"interval": 0.1, \
-		"record_from": ["primary_rate", "secondary_rate"], "withgid": \
-		True, "to_file": True, "label": myLabel})
+		"record_from": ["primary_rate", "secondary_rate"], \
+		"withgid": True, "to_file": myW, "label": myLabel})
 
 		nest.Connect(mm, ms)
 
@@ -294,6 +296,7 @@ for myV in range(1):#len(names)):
 					before = optLengths[i-1]
 				nest.SetStatus(ms, {"L": optLengths[i], "dL":\
 				 (optLengths[i] - before)*100})
+				#if(myMD):
 				metadataFile.write(str(i) +"\n") #debug
 				if(myP):
 					print("sim " + str(i) +"\n") #debug
@@ -311,21 +314,19 @@ for myV in range(1):#len(names)):
 		
 		avg = sum/len(ta)
 
-		metadataFile.write("avg seconds spent per nest.Simulate()"\
-		" simulation " + str(avg) + "\n")
+		metadataFile.write("avg seconds spent per"\
+		" nest.Simulate() simulation " + str(avg) + "\n")
 		smf.write("avg seconds spent per nest.Simulate()"\
 		" simulation " + str(avg) + "\n")
 		if(myP):
 			print("avg seconds spent per nest.Simulate()"\
-			" simulation " + str(avg) + "\n")
+			" simulation " + str(avg))
 		
 		##print("sum " + str(sum))
 		
-		### for writing to file
-		if(myW):
-			# get multimeter recordings with time
-			events = nest.GetStatus(mm)[0]["events"]
-			t = events["times"]
+		# get multimeter recordings
+		events = nest.GetStatus(mm)[0]["events"]
+		#t = events["times"]
 		
 		### for plotting 
 		if(myPl):
@@ -334,3 +335,36 @@ for myV in range(1):#len(names)):
 			# multiply by 10 for actual length of time (1sim/10ms)
 			pylab.xlim(0, len(optLengths)*10)
 			raster_plot.show()
+
+			# 1 plot
+			pylab.clf()
+			pylab.subplot(211)
+			pylab.plot(events["times"], events["primary_rate"])
+			pylab.plot(events["times"], events["secondary_rate"])
+			#pylab.axis([0, len(optLengths)*10, -200, 200]) 
+				# change y bounds z
+			pylab.xlabel("time (ms)")
+			pylab.ylabel("membrane potential (mV) (with electrode "\
+			"inaccuracy,interfence ? )")
+			pylab.legend(("primary_rate", "secondary_rate"))
+			#pylab.show() # shouldnt work on cluster
+			pylab.savefig(outputDir + "plots/pylabPlots/"\
+				+ names[myV]+currentMuscles[myC]\
+				+"afferentsPlots.png")
+			
+			# to plot primary, secondary in diff plots
+			pylab.clf()
+			pylab.subplot(211)
+			pylab.plot(events["times"], events["primary_rate"])
+			pylab.legend(("primary_rate"))
+			pylab.subplot(212)
+			pylab.plot(events["times"], events["secondary_rate"])
+			pylab.legend(("secondary_rate"))
+			pylab.xlabel("time (ms)")
+			pylab.ylabel("membrane potential (mV) (with electrode "\
+			"inaccuracy,interfence ? )")
+			#pylab.show() # shouldnt work on cluster
+			pylab.savefig(outputDir + "plots/pylabPlots/"\
+				+ names[myV]+currentMuscles[myC]\
+				+"afferentsIn2plots.png")
+			
