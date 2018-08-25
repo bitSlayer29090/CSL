@@ -30,8 +30,8 @@ from pylab import show, savefig
 global myCount
 myCount = 0
 #myNames = []
-myOutputDir = "/cluster/2020shachem/CSL/dataMine/NESToutput/merge2lengths/"\
-	"1s/plots/rasterPlots/"
+myOutputDir = "/cluster/2020shachem/CSL/deleteMeDataMine/NESToutput/"\
+	"merge2lengths/1s/plots/rasterPlots/"
 # end mine
 
 def extract_events(data, time=None, sel=None):
