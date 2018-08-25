@@ -1,3 +1,7 @@
+# for saving fig
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 import nest
 from nest import raster_plot
 import pylab
@@ -54,7 +58,9 @@ st_gen	= nest.Create('poisson_generator', 1, {'rate': 30.0})
 nest.Connect(st_gen, ms, 'all_to_all',	{'weight': 1.0,	'delay': 1.0, 'receptor_type': 2})
 
 # spike detector
-sd = nest.Create("spike_detector")
+sd = nest.Create("spike_detector", params={'to_file':True,\
+'label':'myNest_exampleSDoutput'})
+print(str(nest.GetStatus(sd)))
 nest.Connect(ms, sd)
 
 # with 'Multimeter to file example' NEST tutorial params, edited for \
@@ -80,11 +86,21 @@ for i in range(my_int_sim_time):
 
 # get multimeter recordings with time 
 events = nest.GetStatus(mm)[0]["events"]
-"""
-# spike raster plot
-raster_plot.from_device(sd)
-pylab.xlim(0, sim_time)
-raster_plot.show()
-"""
 
+# plotting should work on cluster
+## spike raster plot
+#raster_plot.from_device(sd)
+#pylab.xlim(0, sim_time)
+#raster_plot.show()
+
+pylab.clf()
+pylab.subplot(211)
+pylab.plot(events['times'], events['primary_rate'])
+pylab.plot(events['times'], events['secondary_rate'])
+pylab.xlabel('time (ms)')
+pylab.ylabel('membrane potential (mV) (with electrode inaccuracy, '\
+	'interference?)')
+pylab.legend(('primary_rate', 'secondary)rate'))
+#pylab.show() # shouldnt work on cluster
+pylab.savefig('nest_examplePylabPlot.png')
 

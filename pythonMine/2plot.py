@@ -13,17 +13,21 @@
 
 ### parameters
 myP = 0 # if printing
-myW = False # if writing
+myW = True # if writing
 myPl = 0 # if plotting
 #myMD = 0 # if writing metadata, should always be true on cluster
 pop_size = 50
 #mySec = "2"
 myR = 1
 myLenS = 1
-inputDir = "/cluster/2020shachem/CSL/dataMine/lengths/merge2lengths/"\
-+ str(myLenS) + "s/"
-outputDir = "/cluster/2020shachem/CSL/dataMine/NESToutput/merge2lengths/"\
- + str(myLenS) + "s/"
+#inputDir = "/cluster/2020shachem/CSL/dataMine/lengths/merge2lengths/"\
+#+ str(myLenS) + "s/"
+inputDir = "/cluster/2020shachem/tooBigToGITcommit/dataMine/lengths/"\
+"merge2lengths/" + str(myLenS) + "s/"
+#outputDir = "/cluster/2020shachem/CSL/dataMine/NESToutput/merge2lengths/"\
+# + str(myLenS) + "s/"
+outputDir = "/cluster/2020shachem/CSL/deleteMeDataMine/NESToutput/"\
+"merge2lengths/" + str(myLenS) + "s/"
 if(myLenS==1):
 	names = ["1with2MTstart6.63", "5with-1MTstart32.26", \
 	"8with-1MTstart52.24","10with-1MTstart63.26", "10with-1MTstart63.55", \
@@ -41,6 +45,8 @@ didntCrash = ["0_1","0_2","1_1","1_2","1_3","2_1","2_2","2_3","3_0","3_1","3_2",
 	"8_0","8_1","8_2","8_3","9_0","9_1","9_2","9_3","10_0","10_1","10_2",\
 	"10_3"]
 
+crashed = ["0_0", "0_3", "1_0", "2_0", "4_0", "4_3", "5_0", "6_0"]
+
 # muscle optimal fiber lengths in meters
 optFiberLengths = { \
         "SUBSC":0.0873, \
@@ -54,8 +60,9 @@ optFiberLengths = { \
 	"FCR" : 0.0628}
 currentMuscles=["ECRL","ECU","EDCM","FCR"]
 
-metadataFile = open(outputDir + "datsAndMetadata/metadataFile4cores.txt", "w")
-smf = open(outputDir + "datsAndMetadata/shortMetadataFile4cores.txt", "w")
+# add '4cores' to end of .txt name if sim with 4 cores
+metadataFile = open(outputDir + "datsAndMetadata/metadataFile.txt", "w")
+smf = open(outputDir + "datsAndMetadata/shortMetadataFile.txt", "w")
 
 ### basically mine, prepare nest
 # import modules
@@ -74,13 +81,16 @@ nest.Install("muscle_module")
 
 for myV in range(1):#len(names)):
 	myV = 0
-	for myDC in range(len(didntCrash)):#len(currentMuscles)):
-		#myC = 1
+	for myC in range(1): #len(currentMuscles)):
+	#for myDC in range(len(crashed)):
+		myC = 1
 		
-		underscoreIndex = didntCrash[myDC].find("_")
-		myV = int(didntCrash[myDC][:underscoreIndex])
-		myC = int(didntCrash[myDC][underscoreIndex+1:])
+		#underscoreIndex = didntCrash[myDC].find("_")
+		#myV = int(didntCrash[myDC][:underscoreIndex])
+		#myC = int(didntCrash[myDC][underscoreIndex+1:])
 		
+		print(str(myV) + " " + str(myC))
+
 		### account for irregular timestep 
 		# read file
 		myStr = inputDir + names[myV] + "time.mot"
@@ -264,9 +274,9 @@ for myV in range(1):#len(names)):
 		'delay': 1.0, 'receptor_type': 2})
 
 		# spike detector
-		sd = nest.Create("spike_detector")
+		sd = nest.Create("spike_detector", 1, params={"to_file":False})
 		nest.Connect(ms, sd)
-
+		
 		#if(myW or myPl): # dont use that
 		# with 'Multimeter to file example' NEST tutorial \
 		# params, edited for muscle_spindle
