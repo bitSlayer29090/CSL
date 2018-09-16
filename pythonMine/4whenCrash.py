@@ -82,10 +82,10 @@ import time
 nest.Install("muscle_module")
 
 for myV in range(1):#len(names)):
-	myV = 0
+	myV = 4
 	for myC in range(1): #len(currentMuscles)):
 	#for myDC in range(len(didntCrash)):
-		myC = 0
+		myC = 3
 		
 		#underscoreIndex = didntCrash[myDC].find("_")
 		#myV = int(didntCrash[myDC][:underscoreIndex])
@@ -261,7 +261,7 @@ for myV in range(1):#len(names)):
 		print("myLenS " + str(myLenS) + " myR " + str(myR)\
 			+ " myV " + str(myV) + " myC " + str(myC)\
 			+ " lenOptLengths " + str(len(optLengths)))
-
+		"""
 		### NEST
 		# including reset since it seems to speed up
 		# reset simulation kernel
@@ -391,3 +391,4 @@ for myV in range(1):#len(names)):
 				+ names[myV]+currentMuscles[myC]\
 				+"afferentsIn2plots.png")
 			
+		"""

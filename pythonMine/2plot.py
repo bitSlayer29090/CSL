@@ -61,8 +61,8 @@ optFiberLengths = { \
 currentMuscles=["ECRL","ECU","EDCM","FCR"]
 
 # add '4cores' to end of .txt name if sim with 4 cores
-metadataFile = open(outputDir + "datsAndMetadata/metadataFile.txt", "w")
-smf = open(outputDir + "datsAndMetadata/shortMetadataFile.txt", "w")
+metadataFile = open(outputDir + "datsAndMetadata/metadataFile4cores.txt", "w")
+smf = open(outputDir + "datsAndMetadata/shortMetadataFile4cores.txt", "w")
 
 ### basically mine, prepare nest
 # import modules
@@ -79,17 +79,18 @@ import time
 # install muscle_module module
 nest.Install("muscle_module")
 
+simTa = []
 for myV in range(1):#len(names)):
 	myV = 0
-	for myC in range(1): #len(currentMuscles)):
-	#for myDC in range(len(crashed)):
+	#for myC in range(1): #len(currentMuscles)):
+	for myDC in range(len(didntCrash)):
 		myC = 1
 		
-		#underscoreIndex = didntCrash[myDC].find("_")
-		#myV = int(didntCrash[myDC][:underscoreIndex])
-		#myC = int(didntCrash[myDC][underscoreIndex+1:])
+		underscoreIndex = didntCrash[myDC].find("_")
+		myV = int(didntCrash[myDC][:underscoreIndex])
+		myC = int(didntCrash[myDC][underscoreIndex+1:])
 		
-		print(str(myV) + " " + str(myC))
+		#print(str(myV) + " " + str(myC))
 
 		### account for irregular timestep 
 		# read file
@@ -324,6 +325,8 @@ for myV in range(1):#len(names)):
 		
 		avg = sum/len(ta)
 
+		simTa = simTa + [avg]
+
 		metadataFile.write("avg seconds spent per"\
 		" nest.Simulate() simulation " + str(avg) + "\n")
 		smf.write("avg seconds spent per nest.Simulate()"\
@@ -337,6 +340,8 @@ for myV in range(1):#len(names)):
 		# get multimeter recordings
 		events = nest.GetStatus(mm)[0]["events"]
 		#t = events["times"]
+
+		smf.write(str(simTa))
 		
 		### for plotting 
 		if(myPl):

@@ -4,7 +4,7 @@ import pylab
 import time
 
 # simulation parameter
-cycles = 16
+cycles = 4
 sim_time = 4400*cycles
 pop_size = 50
 
