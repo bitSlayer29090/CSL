@@ -1,7 +1,7 @@
 function []=DrJonesMoBLmod4wristComparisonTuningCurves_phaseShift_noMVC(trialN,ptN,doMakeAvgOfAvg, doPlotCartesian)
 % Creating tuning curves from microneurographic recordings of muscle
 % spindles in human extensor carpi radialis as taken in 'Jones, K. E.,
-% Wessberg, J., & Vallbo, Å. B. (2001). Directional tuning of human forearm
+% Wessberg, J., & Vallbo, Ã…. B. (2001). Directional tuning of human forearm
 % muscle afferents during voluntary wrist movements. The Journal of
 % Physiology, 536(2), 635-647.
 
