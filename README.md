@@ -7,4 +7,4 @@ Modern prosthetics lack proprioception- the sense of self-movement and body posi
 
 Rest of the paper here: https://www.teknos.org/home/2019/8/2/predicting-muscle-spindle-afferent-output-in-human-forearm-muscles-during-wrist-flexionextension-and-radialulnar-deviation
 
-Raw sEMG data is in input files which are processed by processEMGtoLengthsPolymorphic.m and other files in beforeAfterNest/ to output. These are passed to an OpenSim Forward Dynamics tool in incrementalFD.m to predict muscle lengths. This outputs .mot files, which was provided to 3mainWithSinusoidal.py which predicts afferent output in binarySpiketimes[...].txt. 
+Raw sEMG data is in input files which are processed by processEMGtoLengthsPolymorphic.m and other files in beforeAfterNest/ to output processed EMG. This is passed to an OpenSim Forward Dynamics tool in incrementalFD.m to predict muscle lengths. This outputs .mot files, which was provided to 3mainWithSinusoidal.py which predicts afferent output in binarySpiketimes[...].txt. 
